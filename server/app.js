@@ -221,7 +221,7 @@ export async function createApp({ store, ownerPassword, secureCookies = false, d
   hub.use((req, res) => res.status(404).json({ error: 'Not found.' }));
   app.use('/api/hub/v1', hub);
 
-  /* ---------- Suite screens ---------- */
+  /* ---------- NEC Suite screens ---------- */
 
   app.use('/api', express.json({ limit: '1mb' }));
   // Browsers only send this custom header from our own pages, which blocks cross site form posts.

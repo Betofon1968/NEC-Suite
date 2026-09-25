@@ -1,8 +1,8 @@
-# Render Blueprint: creates the Suite web service and its PostgreSQL database.
+# Render Blueprint: creates the NEC Suite web service and its PostgreSQL database.
 # In Render: New > Blueprint > pick this repository. You will be asked for SUITE_PASSWORD.
 services:
   - type: web
-    name: suite
+    name: nec-suite
     runtime: node
     buildCommand: npm ci --include=dev && npm run build
     startCommand: npm start
@@ -16,9 +16,9 @@ services:
         sync: false
       - key: DATABASE_URL
         fromDatabase:
-          name: suite-db
+          name: nec-suite-db
           property: connectionString
 
 databases:
-  - name: suite-db
+  - name: nec-suite-db
     databaseName: suite

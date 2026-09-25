@@ -37,7 +37,7 @@ const app = await createApp({
 });
 
 const server = app.listen(port, () => {
-  console.log(`Suite server on http://localhost:${port} using ${store.kind} storage`);
+  console.log(`NEC Suite server on http://localhost:${port} using ${store.kind} storage`);
 });
 
 for (const signal of ['SIGINT', 'SIGTERM']) {

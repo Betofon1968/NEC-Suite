@@ -1,4 +1,4 @@
-# Connecting an app to the Suite
+# Connecting an app to the NEC Suite
 
 Each app shares data through the suite's **hub API**. An app sends its own full list of drivers or trucks and trailers, and (if allowed) reads back the combined record, for example the qualification status from the compliance app.
 
@@ -6,13 +6,13 @@ Each app shares data through the suite's **hub API**. An app sends its own full 
 
 In the suite, open **Connections**, click **Connect an app**, pick what the app may do, and click **Connect and show key**. Copy:
 
-* `SUITE_URL`: the suite address, for example `https://suite.onrender.com`
+* `SUITE_URL`: the suite address, for example `https://nec-suite.onrender.com`
 * `SUITE_API_KEY`: the key, which starts with `suite_`. It is shown once.
 
 Put both in the app's **server** settings. Never put the key in a web page or a phone app, where anyone could read it. For apps on Supabase, that means an Edge Function secret:
 
 ```bash
-npx supabase@latest secrets set SUITE_URL=https://suite.onrender.com SUITE_API_KEY=suite_... --project-ref <ref>
+npx supabase@latest secrets set SUITE_URL=https://nec-suite.onrender.com SUITE_API_KEY=suite_... --project-ref <ref>
 ```
 
 ## 2. Permissions

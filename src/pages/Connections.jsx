@@ -36,7 +36,7 @@ function KeyModal({ name, keyValue, onClose }) {
       <div className="alert alert-info">
         This key is shown only once. Copy it now and put it in the settings of {name}. If it is lost, make a new one.
       </div>
-      <Field label="Suite address (SUITE_URL)">
+      <Field label="NEC Suite address (SUITE_URL)">
         <div className="copy-row">
           <code>{window.location.origin}</code>
           <button type="button" className="btn btn-sm" onClick={() => copy(window.location.origin)}>

@@ -49,7 +49,7 @@ export default function LoginScreen({ phase, onLoggedIn, onRetry }) {
         <div className="brand login-brand">
           <span className="brand-mark">▦</span>
           <span>
-            <strong>Suite</strong>
+            <strong>NEC Suite</strong>
             <small>All company apps in one place</small>
           </span>
         </div>

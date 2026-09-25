@@ -1,4 +1,4 @@
-# NEC-Suite
+# NEC Suite
 
 One home screen for every company app, and a data hub so the apps share drivers, trucks and trailers. Built with React 19, JavaScript, Vite and a small Node.js server, the same way as **TMS**.
 

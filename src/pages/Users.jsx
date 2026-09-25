@@ -167,7 +167,7 @@ export default function Users() {
           + Add user
         </button>
       </PageHeader>
-      <Card title="Suite users">
+      <Card title="NEC Suite users">
         {!users ? (
           <p className="muted">Loading…</p>
         ) : users.length === 0 ? (

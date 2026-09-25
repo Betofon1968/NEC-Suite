@@ -37,7 +37,7 @@ export default function Layout() {
         <div className="brand">
           <span className="brand-mark">▦</span>
           <span>
-            <strong>Suite</strong>
+            <strong>NEC Suite</strong>
             <small>All company apps</small>
           </span>
         </div>
@@ -83,7 +83,7 @@ export default function Layout() {
           <button type="button" className="icon-btn menu-btn" onClick={() => setOpen((o) => !o)} aria-label="Menu">
             ☰
           </button>
-          <span className="topbar-title">Suite</span>
+          <span className="topbar-title">NEC Suite</span>
         </header>
         <main className="content">
           <Outlet />
