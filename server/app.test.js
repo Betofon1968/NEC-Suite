@@ -99,6 +99,7 @@ function suite(makeStore) {
     expect((await guest.post('/api/login', { email: 'owner', password: 'wrong' })).status).toBe(401);
     const o = await owner.get('/api/overview');
     expect(o.body.apps.map((a) => a.name)).toContain('NEC Trucking Compliance');
+    expect(o.body.apps.map((a) => a.name)).toContain('Porky Local Management');
     expect((await owner.post('/api/logout', {}, { header: false })).status).toBe(403);
   });
 

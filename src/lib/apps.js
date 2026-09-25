@@ -36,6 +36,13 @@ export const DEFAULT_APPS = [
     icon: '🛡',
     color: 'indigo',
   },
+  {
+    name: 'Porky Local Management',
+    description: 'Porky Products local operations and weekly owner operator settlements',
+    url: '',
+    icon: '🐖',
+    color: 'red',
+  },
 ];
 
 export const APP_COLORS = ['blue', 'teal', 'green', 'amber', 'red', 'indigo', 'slate'];
