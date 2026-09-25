@@ -255,7 +255,7 @@ export default function Connections() {
             <li>The app sends its full list of drivers, trucks and trailers every few minutes and when something changes.</li>
             <li>Apps that may read get back the combined record, for example the qualification from the compliance app.</li>
           </ol>
-          <p className="small muted">The full API is in CONNECT.md in the Suite repository.</p>
+          <p className="small muted">The full API is in CONNECT.md in the NEC-Suite repository.</p>
         </Card>
         <Card title="Recent activity">
           {data.activity.length === 0 ? (
