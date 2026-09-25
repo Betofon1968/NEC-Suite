@@ -22,9 +22,26 @@ create table if not exists suite_users (
 );
 `;
 
+// On Supabase, tables in the public schema are also served by its web API to anyone who
+// has the project's public key (it is inside every web app). Row Level Security with no
+// rules closes that door. This server connects as the owner of the tables, so it is not
+// affected. On other PostgreSQL hosts these lines change nothing.
+const lockTables = (tables) => `
+${tables.map((t) => `alter table ${t} enable row level security;`).join('\n')}
+do $$ begin
+  if exists (select 1 from pg_roles where rolname = 'anon') then
+    revoke all on ${tables.join(', ')} from anon;
+  end if;
+  if exists (select 1 from pg_roles where rolname = 'authenticated') then
+    revoke all on ${tables.join(', ')} from authenticated;
+  end if;
+end $$;
+`;
+
 export async function createPgStore(connectionString, { ssl = false } = {}) {
   const pool = new pg.Pool({ connectionString, ssl: ssl ? { rejectUnauthorized: false } : undefined, max: 5 });
   await pool.query(SCHEMA);
+  await pool.query(lockTables(['suite_state', 'suite_sessions', 'suite_users']));
   const one = async (sql, params) => (await pool.query(sql, params)).rows[0] || null;
 
   return {

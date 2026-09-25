@@ -1,9 +1,12 @@
-# Render Blueprint: creates the NEC Suite web service and its PostgreSQL database.
-# In Render: New > Blueprint > pick this repository. You will be asked for SUITE_PASSWORD.
+# Render Blueprint: creates the NEC Suite web service. The data lives in Supabase
+# (see DEPLOY.md). In Render: New > Blueprint > pick this repository. You will be
+# asked for SUITE_PASSWORD and DATABASE_URL.
 services:
   - type: web
     name: nec-suite
     runtime: node
+    # Close to New York and to the Supabase region East US (North Virginia).
+    region: virginia
     buildCommand: npm ci --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
@@ -14,11 +17,6 @@ services:
         value: "22"
       - key: SUITE_PASSWORD
         sync: false
+      # Supabase > Connect > Session pooler connection string, with the database password in it.
       - key: DATABASE_URL
-        fromDatabase:
-          name: nec-suite-db
-          property: connectionString
-
-databases:
-  - name: nec-suite-db
-    databaseName: suite
+        sync: false

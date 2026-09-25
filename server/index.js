@@ -1,7 +1,7 @@
 // Starts the suite server. Settings come from environment variables:
 //   PORT              port to listen on (default 3002)
 //   DATABASE_URL      PostgreSQL connection string; without it data is kept in DATA_DIR
-//   DATABASE_SSL      "true" when the database requires SSL (external connections)
+//   DATABASE_SSL      "true" when the database requires SSL (automatic for Supabase)
 //   DATA_DIR          folder for local data (default ./data)
 //   SUITE_PASSWORD    password of the owner login (required in production)
 import path from 'node:path';
@@ -25,7 +25,9 @@ if (!ownerPassword || ownerPassword.length < 8) {
 }
 
 const store = process.env.DATABASE_URL
-  ? await createPgStore(process.env.DATABASE_URL, { ssl: process.env.DATABASE_SSL === 'true' })
+  ? await createPgStore(process.env.DATABASE_URL, {
+      ssl: process.env.DATABASE_SSL === 'true' || /supabase\.(co|com)\b/.test(process.env.DATABASE_URL),
+    })
   : await createFileStore(path.resolve(root, process.env.DATA_DIR || 'data'));
 
 const app = await createApp({

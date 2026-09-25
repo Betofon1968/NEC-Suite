@@ -35,7 +35,7 @@ To put it online, follow [DEPLOY.md](DEPLOY.md). To connect an app, follow [CONN
 server/
   app.js            API: suite users, apps, connections, and the hub for connected apps
   auth.js           password hashing, session tokens, sign in limits
-  store/pg.js       PostgreSQL storage (online)
+  store/pg.js       PostgreSQL storage (online, in Supabase)
   store/file.js     local folder storage (your own computer)
 src/
   lib/hub.js        the hub rules: cleaning what apps send, matching, merging, alerts
