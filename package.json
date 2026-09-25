@@ -1,0 +1,28 @@
+{
+  "name": "suite",
+  "private": true,
+  "version": "0.1.0",
+  "description": "One home screen for every company app, and a data hub so the apps share drivers, trucks and trailers.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.23.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.1"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

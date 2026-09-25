@@ -1,0 +1,24 @@
+# Render Blueprint: creates the Suite web service and its PostgreSQL database.
+# In Render: New > Blueprint > pick this repository. You will be asked for SUITE_PASSWORD.
+services:
+  - type: web
+    name: suite
+    runtime: node
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: SUITE_PASSWORD
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: suite-db
+          property: connectionString
+
+databases:
+  - name: suite-db
+    databaseName: suite
